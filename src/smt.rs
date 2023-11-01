@@ -271,7 +271,7 @@ impl Smt {
 fn serialize(smt: &Smt, key: Bits, v: &mut Vec<U256>) -> usize {
     if let Some(node) = smt.leaves.get(&key) {
         if node.is_empty() && !key.is_empty() {
-            // `!key.is_empty()` condition is only to ensure that `serialize(Empty)=[0,0,0,4]` and not just `[0,0]`.
+            // `!key.is_empty()` condition is only to ensure that `serialize(Empty)=[0,0,0,0]` and not just `[0,0]`.
             return 0; // `ptr=0` is an empty node.
         }
         match node {
